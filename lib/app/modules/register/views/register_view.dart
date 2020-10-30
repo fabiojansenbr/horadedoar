@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:horadedoar/app/modules/register/controllers/register_controller.dart';
+import 'package:horadedoar/app/routes/app_pages.dart';
 import 'package:horadedoar/app/theme/app_theme.dart';
 import 'package:horadedoar/app/theme/custom_theme.dart';
 
@@ -8,6 +9,11 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Stack(
         children: <Widget>[
           Container(
@@ -37,9 +43,7 @@ class RegisterView extends GetView<RegisterController> {
                   ),
                   SizedBox(height: 40.0),
                   _buildUsernameTF(),
-                  SizedBox(
-                    height: 15.0,
-                  ),
+                  SizedBox(height: 15.0),
                   _buildEmailTF(),
                   SizedBox(height: 15.0),
                   _buildPasswordTF(),
@@ -182,7 +186,9 @@ class RegisterView extends GetView<RegisterController> {
           borderRadius: BorderRadius.circular(25.0),
         ),
         color: Color(0XFFB5505C),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(Routes.LOGIN);
+        },
         child: Text(
           'Entrar',
           style: TextStyle(

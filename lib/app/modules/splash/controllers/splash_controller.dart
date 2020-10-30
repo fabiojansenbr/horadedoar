@@ -23,7 +23,7 @@ class SplashController extends GetxController {
   }
 
   void checkToken() async {
-    Get.offNamed(Routes.REGISTER);
+    Get.offNamed(Routes.LOGIN);
   }
 
   @override
