@@ -1,18 +1,31 @@
 import 'package:get/get.dart';
+import 'package:horadedoar/app/routes/app_pages.dart';
+import 'package:horadedoar/app/theme/custom_theme.dart';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
-  
-  final count = 0.obs;
+  @override
+  void onInit() {
+    super.onInit();
+
+    initTheme();
+    print('Theme initialized');
+  }
 
   @override
-  void onInit() {}
+  void onReady() {
+    super.onReady();
 
-  @override
-  void onReady() {}
+    checkToken();
+  }
+
+  void initTheme() {
+    CustomTheme.init(Get.context);
+  }
+
+  void checkToken() async {
+    Get.offNamed(Routes.REGISTER);
+  }
 
   @override
   void onClose() {}
-
-  void increment() => count.value++;
 }

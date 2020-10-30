@@ -1,22 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; 
+import 'package:get/get.dart';
 import 'package:horadedoar/app/modules/splash/controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('SplashView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'SplashView is working', 
-          style: TextStyle(fontSize:20),
-        ),
-      ),
+    return GetBuilder<SplashController>(
+      init: SplashController(),
+      initState: (_) {},
+      builder: (_) {
+        return Scaffold(
+          body: Center(
+            child: CupertinoActivityIndicator(radius: 15),
+          ),
+        );
+      },
     );
   }
 }
-  

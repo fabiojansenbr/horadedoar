@@ -10,28 +10,27 @@ import 'package:get/get.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  
-static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
-      name: Routes.HOME, 
-      page:()=> HomeView(), 
+      name: Routes.HOME,
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
-      name: Routes.LOGIN, 
-      page:()=> LoginView(), 
+      name: Routes.LOGIN,
+      page: () => LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
-      name: Routes.REGISTER, 
-      page:()=> RegisterView(), 
+      name: Routes.REGISTER,
+      page: () => RegisterView(),
       binding: RegisterBinding(),
     ),
     GetPage(
-      name: Routes.SPLASH, 
-      page:()=> SplashView(), 
+      name: Routes.SPLASH,
+      page: () => SplashView(),
       binding: SplashBinding(),
     ),
   ];
