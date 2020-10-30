@@ -22,11 +22,13 @@ class AppPages {
       name: Routes.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+      transition: Transition.fadeIn,
     ),
     GetPage(
       name: Routes.REGISTER,
       page: () => RegisterView(),
       binding: RegisterBinding(),
+      transition: Transition.fadeIn,
     ),
     GetPage(
       name: Routes.SPLASH,
