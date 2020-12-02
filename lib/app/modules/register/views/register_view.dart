@@ -8,54 +8,55 @@ import 'package:horadedoar/app/theme/custom_theme.dart';
 class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: new DecorationImage(
+            image: new AssetImage('assets/images/background_final.jpg'),
+            fit: BoxFit.cover),
       ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: new DecorationImage(
-                  image: new AssetImage('assets/images/background_final.jpg'),
-                  fit: BoxFit.cover),
-            ),
-          ),
-          Container(
-            height: double.infinity,
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(
-                horizontal: 40.0,
-                vertical: 120.0,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+        ),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              height: double.infinity,
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 35.0,
+                  vertical: 120.0,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image(
+                      image: AssetImage('assets/images/logo_full.png'),
+                      width: Get.width * .60,
+                      height: Get.height * .20,
+                    ),
+                    SizedBox(height: 40.0),
+                    _buildUsernameTF(),
+                    SizedBox(height: 15.0),
+                    _buildEmailTF(),
+                    SizedBox(height: 15.0),
+                    _buildPasswordTF(),
+                    SizedBox(height: 15.0),
+                    _buildRegisterBtn(),
+                    SizedBox(height: 10.0),
+                    _buildLoginBtn(),
+                  ],
+                ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image(
-                    image: AssetImage('assets/images/logo_full.png'),
-                    width: Get.width * .50,
-                    height: Get.height * .20,
-                  ),
-                  SizedBox(height: 40.0),
-                  _buildUsernameTF(),
-                  SizedBox(height: 15.0),
-                  _buildEmailTF(),
-                  SizedBox(height: 15.0),
-                  _buildPasswordTF(),
-                  SizedBox(height: 15.0),
-                  _buildRegisterBtn(),
-                  SizedBox(height: 10.0),
-                  _buildLoginBtn(),
-                ],
-              ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
