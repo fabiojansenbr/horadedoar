@@ -18,86 +18,61 @@ class LoginView extends GetView<LoginController> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            Container(
-              height: double.infinity,
-              child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 35.0,
-                  vertical: 120.0,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image(
-                      image: AssetImage('assets/images/logo_full.png'),
-                      width: Get.width * .60,
-                      height: Get.height * .20,
-                    ),
-                    SizedBox(height: 40.0),
-                    _buildEmailTF(),
-                    SizedBox(height: 15.0),
-                    _buildPasswordTF(),
-                    SizedBox(height: 15.0),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Container(),
-                        ),
-                        FlatButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Esqueceu sua senha?',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                child: SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 35.0,
+                    vertical: 120.0,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image(
+                        image: AssetImage('assets/images/logo_full.png'),
+                        width: Get.width * .60,
+                        height: Get.height * .20,
+                      ),
+                      SizedBox(height: 40.0),
+                      _buildEmailTF(),
+                      SizedBox(height: 15.0),
+                      _buildPasswordTF(),
+                      SizedBox(height: 15.0),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 50.0),
-                    _buildLoginBtn(),
-                    SizedBox(height: 10.0),
-                    _buildRegisterBtn(),
-                  ],
+                          FlatButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Esqueceu sua senha?',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 50.0),
+                      _buildLoginBtn(),
+                      SizedBox(height: 10.0),
+                      _buildRegisterBtn(),
+                    ],
+                  ),
                 ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUsernameTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: CustomTheme.cfBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15.0,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              hintText: 'Seu nome',
-              //hintStyle: MainTheme.cfHintTextStyle,
-            ),
+              )
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
