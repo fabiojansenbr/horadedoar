@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:horadedoar/app/modules/login/controllers/login_controller.dart';
 import 'package:horadedoar/app/routes/app_pages.dart';
+import 'package:horadedoar/app/shared/widgets/hd_textbutton.dart';
+import 'package:horadedoar/app/shared/widgets/hd_textfield.dart';
 import 'package:horadedoar/app/theme/app_theme.dart';
-import 'package:horadedoar/app/theme/custom_theme.dart';
 
 class LoginView extends GetView<LoginController> {
   @override
@@ -13,8 +14,9 @@ class LoginView extends GetView<LoginController> {
       width: double.infinity,
       decoration: BoxDecoration(
         image: new DecorationImage(
-            image: new AssetImage('assets/images/background_final.jpg'),
-            fit: BoxFit.cover),
+          image: new AssetImage('assets/images/background_final.jpg'),
+          fit: BoxFit.cover,
+        ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -28,9 +30,10 @@ class LoginView extends GetView<LoginController> {
                 height: double.infinity,
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 35.0,
-                    vertical: 120.0,
+                  padding: const EdgeInsets.only(
+                    top: 120.0,
+                    left: 30,
+                    right: 30,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -41,9 +44,21 @@ class LoginView extends GetView<LoginController> {
                         height: Get.height * .20,
                       ),
                       SizedBox(height: 40.0),
-                      _buildEmailTF(),
+                      HdTextField(
+                        hintText: 'Seu e-mail',
+                        prefixIcon: Icon(
+                          Icons.mail,
+                          color: Colors.black,
+                        ),
+                      ),
                       SizedBox(height: 15.0),
-                      _buildPasswordTF(),
+                      HdTextField(
+                        hintText: 'Senha',
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: Colors.black,
+                        ),
+                      ),
                       SizedBox(height: 15.0),
                       Row(
                         children: [
@@ -55,136 +70,35 @@ class LoginView extends GetView<LoginController> {
                             child: Text(
                               'Esqueceu sua senha?',
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ],
                       ),
                       SizedBox(height: 50.0),
-                      _buildLoginBtn(),
-                      SizedBox(height: 10.0),
-                      _buildRegisterBtn(),
+                      HdTextButton(
+                        label: 'Entrar',
+                        backgroundColor: appThemeData.primaryColor,
+                        onPressed: () {
+                          print('entrar pressed');
+                        },
+                      ),
+                      SizedBox(height: 15.0),
+                      HdTextButton(
+                        label: 'Cadastrar',
+                        backgroundColor: Color(0XFFB5505C),
+                        onPressed: () {
+                          Get.toNamed(Routes.REGISTER);
+                        },
+                      ),
                     ],
                   ),
                 ),
               )
             ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildEmailTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: CustomTheme.cfBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15.0,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.mail,
-                color: Colors.black,
-              ),
-              hintText: 'Seu e-mail',
-              //hintStyle: MainTheme.cfHintTextStyle,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: CustomTheme.cfBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            obscureText: true,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15.0,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock,
-                color: Colors.black,
-              ),
-              hintText: 'Senha',
-              //hintStyle: MainTheme.cfHintTextStyle,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildRegisterBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 15.0),
-      width: double.infinity,
-      child: TextButton(
-        style: TextButton.styleFrom(
-          elevation: 5.0,
-          padding: EdgeInsets.all(18.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          backgroundColor: Color(0XFFB5505C),
-        ),
-        onPressed: () {
-          Get.toNamed(Routes.REGISTER);
-        },
-        child: Text(
-          'Cadastrar',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLoginBtn() {
-    return Container(
-      width: double.infinity,
-      child: TextButton(
-        style: TextButton.styleFrom(
-          elevation: 5.0,
-          padding: EdgeInsets.all(18.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          backgroundColor: appThemeData.primaryColor,
-        ),
-        onPressed: () {},
-        child: Text(
-          'Entrar',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
           ),
         ),
       ),
