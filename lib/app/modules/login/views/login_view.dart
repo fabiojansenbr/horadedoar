@@ -27,7 +27,7 @@ class LoginView extends GetView<LoginController> {
               Container(
                 height: double.infinity,
                 child: SingleChildScrollView(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 35.0,
                     vertical: 120.0,
@@ -50,7 +50,7 @@ class LoginView extends GetView<LoginController> {
                           Expanded(
                             child: Container(),
                           ),
-                          FlatButton(
+                          TextButton(
                             onPressed: () {},
                             child: Text(
                               'Esqueceu sua senha?',
@@ -142,13 +142,15 @@ class LoginView extends GetView<LoginController> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15.0),
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        padding: EdgeInsets.all(18.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          elevation: 5.0,
+          padding: EdgeInsets.all(18.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          backgroundColor: Color(0XFFB5505C),
         ),
-        color: Color(0XFFB5505C),
         onPressed: () {
           Get.toNamed(Routes.REGISTER);
         },
@@ -167,13 +169,15 @@ class LoginView extends GetView<LoginController> {
   Widget _buildLoginBtn() {
     return Container(
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        padding: EdgeInsets.all(18.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          elevation: 5.0,
+          padding: EdgeInsets.all(18.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          backgroundColor: appThemeData.primaryColor,
         ),
-        color: appThemeData.primaryColor,
         onPressed: () {},
         child: Text(
           'Entrar',

@@ -162,13 +162,15 @@ class RegisterView extends GetView<RegisterController> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15.0),
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        padding: EdgeInsets.all(18.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          elevation: 5.0,
+          padding: EdgeInsets.all(18.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          backgroundColor: appThemeData.primaryColor,
         ),
-        color: appThemeData.primaryColor,
         onPressed: () {},
         child: Text(
           'Cadastrar',
@@ -185,13 +187,15 @@ class RegisterView extends GetView<RegisterController> {
   Widget _buildLoginBtn() {
     return Container(
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        padding: EdgeInsets.all(18.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          elevation: 5.0,
+          padding: EdgeInsets.all(18.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          backgroundColor: Color(0XFFB5505C),
         ),
-        color: Color(0XFFB5505C),
         onPressed: () {
           Get.toNamed(Routes.LOGIN);
         },
