@@ -37,8 +37,8 @@ class RegisterView extends GetView<RegisterController> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: const EdgeInsets.only(
                     top: 120.0,
-                    left: 30,
-                    right: 30,
+                    left: 45,
+                    right: 45,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
