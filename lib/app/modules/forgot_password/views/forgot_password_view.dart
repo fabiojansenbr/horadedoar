@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:horadedoar/app/modules/login/controllers/login_controller.dart';
-import 'package:horadedoar/app/routes/app_pages.dart';
+import 'package:horadedoar/app/modules/forgot_password/controllers/forgot_password_controller.dart';
 import 'package:horadedoar/app/shared/widgets/hd_textbutton.dart';
 import 'package:horadedoar/app/shared/widgets/hd_textfield.dart';
 import 'package:horadedoar/app/theme/app_theme.dart';
 
-class LoginView extends GetView<LoginController> {
+class ForgotPasswordView extends GetView<ForgotPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,6 +19,11 @@ class LoginView extends GetView<LoginController> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+        ),
         body: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -51,49 +55,20 @@ class LoginView extends GetView<LoginController> {
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 15.0),
-                      HdTextField(
-                        hintText: 'Senha',
-                        prefixIcon: Icon(
-                          Icons.lock,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(height: 15.0),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Get.toNamed(Routes.FORGOT_PASSWORD);
-                            },
-                            child: Text(
-                              'Esqueceu sua senha?',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 50.0),
+                      SizedBox(height: 200.0),
                       HdTextButton(
-                        label: 'Entrar',
+                        label: 'Redefinir senha',
                         backgroundColor: appThemeData.primaryColor,
                         onPressed: () {
-                          print('entrar pressed');
+                          print('Redefinir pressed');
                         },
                       ),
                       SizedBox(height: 15.0),
                       HdTextButton(
-                        label: 'Cadastrar',
+                        label: 'Voltar',
                         backgroundColor: Color(0XFFB5505C),
                         onPressed: () {
-                          Get.toNamed(Routes.REGISTER);
+                          Get.back();
                         },
                       ),
                     ],
