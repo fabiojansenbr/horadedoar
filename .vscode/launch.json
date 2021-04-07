@@ -1,0 +1,34 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "horadedoar",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "RedmiNote",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "9hwojjyhizq4o7mn"
+    },
+    {
+      "name": "Memuplay",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "127.0.0.1:21503"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "All Devices",
+      "configurations": [
+        "RedmiNote",
+        "Memuplay"
+      ],
+    }
+  ]
+}
