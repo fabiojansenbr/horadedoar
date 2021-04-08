@@ -72,9 +72,10 @@ class LoginView extends GetView<LoginController> {
                             child: Text(
                               'Esqueceu sua senha?',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: appThemeData.primaryColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
+                                backgroundColor: Colors.white38,
                               ),
                             ),
                           ),

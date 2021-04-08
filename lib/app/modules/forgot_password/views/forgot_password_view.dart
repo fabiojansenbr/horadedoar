@@ -48,6 +48,17 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                         height: Get.height * .20,
                       ),
                       SizedBox(height: 40.0),
+                      Text(
+                        'Insira o seu E-mail e receba um link de redefinição de senha',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: appThemeData.primaryColor,
+                          fontWeight: FontWeight.bold,
+                          backgroundColor: Colors.white38,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(height: 40.0),
                       HdTextField(
                         hintText: 'Seu e-mail',
                         prefixIcon: Icon(
@@ -55,7 +66,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 200.0),
+                      SizedBox(height: 100.0),
                       HdTextButton(
                         label: 'Redefinir senha',
                         backgroundColor: appThemeData.primaryColor,
