@@ -4,8 +4,9 @@ import 'package:horadedoar/app/theme/custom_theme.dart';
 class HdTextField extends StatelessWidget {
   final String hintText;
   final Icon prefixIcon;
+  final TextEditingController controller;
 
-  const HdTextField({Key key, this.hintText, this.prefixIcon})
+  const HdTextField({Key key, this.hintText, this.prefixIcon, this.controller})
       : super(key: key);
 
   @override
@@ -18,8 +19,9 @@ class HdTextField extends StatelessWidget {
           alignment: Alignment.centerLeft,
           decoration: CustomTheme.cfBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
             keyboardType: TextInputType.emailAddress,
+            controller: this.controller,
             style: TextStyle(
               color: Colors.black,
               fontSize: 15.0,
