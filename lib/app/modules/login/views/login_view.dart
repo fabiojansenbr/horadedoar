@@ -7,6 +7,9 @@ import 'package:horadedoar/app/shared/widgets/hd_textfield.dart';
 import 'package:horadedoar/app/theme/app_theme.dart';
 
 class LoginView extends GetView<LoginController> {
+  final emailTextEditingController = TextEditingController();
+  final passwordTextEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,69 +38,75 @@ class LoginView extends GetView<LoginController> {
                     left: 45,
                     right: 45,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image(
-                        image: AssetImage('assets/images/logo_full.png'),
-                        width: Get.width * .60,
-                        height: Get.height * .20,
-                      ),
-                      SizedBox(height: 40.0),
-                      HdTextField(
-                        hintText: 'Seu e-mail',
-                        prefixIcon: Icon(
-                          Icons.mail,
-                          color: Colors.black,
+                  child: Form(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image(
+                          image: AssetImage('assets/images/logo_full.png'),
+                          width: Get.width * .60,
+                          height: Get.height * .20,
                         ),
-                      ),
-                      SizedBox(height: 15.0),
-                      HdTextField(
-                        hintText: 'Senha',
-                        prefixIcon: Icon(
-                          Icons.lock,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(height: 15.0),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(),
+                        SizedBox(height: 40.0),
+                        HdTextField(
+                          hintText: 'Seu e-mail',
+                          controller: emailTextEditingController,
+                          prefixIcon: Icon(
+                            Icons.mail,
+                            color: Colors.black,
                           ),
-                          TextButton(
-                            onPressed: () {
-                              Get.toNamed(Routes.FORGOT_PASSWORD);
-                            },
-                            child: Text(
-                              'Esqueceu sua senha?',
-                              style: TextStyle(
-                                color: appThemeData.primaryColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                backgroundColor: Colors.white38,
+                        ),
+                        SizedBox(height: 15.0),
+                        HdTextField(
+                          hintText: 'Senha',
+                          controller: passwordTextEditingController,
+                          prefixIcon: Icon(
+                            Icons.lock,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 15.0),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Container(),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Get.toNamed(Routes.FORGOT_PASSWORD);
+                              },
+                              child: Text(
+                                'Esqueceu sua senha?',
+                                style: TextStyle(
+                                  color: appThemeData.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  backgroundColor: Colors.white38,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 50.0),
-                      HdTextButton(
-                        label: 'Entrar',
-                        backgroundColor: appThemeData.primaryColor,
-                        onPressed: () {
-                          print('entrar pressed');
-                        },
-                      ),
-                      SizedBox(height: 15.0),
-                      HdTextButton(
-                        label: 'Cadastrar',
-                        backgroundColor: Color(0XFFB5505C),
-                        onPressed: () {
-                          Get.toNamed(Routes.REGISTER);
-                        },
-                      ),
-                    ],
+                          ],
+                        ),
+                        SizedBox(height: 50.0),
+                        HdTextButton(
+                          label: 'Entrar',
+                          backgroundColor: appThemeData.primaryColor,
+                          onPressed: () {
+                            controller.loginWithEmail(
+                                emailTextEditingController.text,
+                                passwordTextEditingController.text);
+                          },
+                        ),
+                        SizedBox(height: 15.0),
+                        HdTextButton(
+                          label: 'Cadastrar',
+                          backgroundColor: Color(0XFFB5505C),
+                          onPressed: () {
+                            Get.toNamed(Routes.REGISTER);
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )

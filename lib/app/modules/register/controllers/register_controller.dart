@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:horadedoar/app/data/models/user_model.dart';
 import 'package:horadedoar/app/data/repositories/i_user_repository.dart';
 import 'package:horadedoar/app/routes/app_pages.dart';
 import 'package:horadedoar/app/shared/helpers/loader_mixin.dart';
@@ -30,13 +29,12 @@ class RegisterController extends GetxController
     super.onClose();
   }
 
-  Future<void> signUp(String name, String email, String password) async {
+  Future signUp(String fullName, String email, String password) async {
     try {
-      final user = UserModel(name: name, email: email, password: password);
-
       loading(true);
-      final resultUser = await _userRepository.signup(user);
-      print(resultUser);
+      final result = await _userRepository.register(fullName, email, password);
+      print(result);
+
       loading(false);
 
       Get.offAllNamed(Routes.LOGIN);
@@ -45,7 +43,7 @@ class RegisterController extends GetxController
           'Aviso', 'Cadastro efetuado com sucesso. Por favor, faça o login.'));
     } catch (e) {
       loading(false);
-      message(MessageModel('Aviso', e));
+      message(MessageModel('Aviso', e.message));
     } finally {
       loading(false);
     }
