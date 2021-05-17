@@ -29,7 +29,7 @@ class RegisterController extends GetxController
     super.onClose();
   }
 
-  Future signUp(String fullName, String email, String password) async {
+  Future<void> signUp(String fullName, String email, String password) async {
     try {
       loading(true);
       final result = await _userRepository.register(fullName, email, password);
@@ -37,7 +37,7 @@ class RegisterController extends GetxController
 
       loading(false);
 
-      Get.offAllNamed(Routes.LOGIN);
+      Get.back();
 
       message(MessageModel(
           'Aviso', 'Cadastro efetuado com sucesso. Por favor, faça o login.'));

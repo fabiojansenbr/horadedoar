@@ -30,8 +30,37 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<UserModel> loginWithEmail(String email, String password) {
-    // TODO: implement loginWithEmail
-    throw UnimplementedError();
+  Future<UserModel> loginWithEmail(String email, String password) async {
+    final response = await httpClient
+        .post('/auth/local/', {'identifier': email, 'password': password},
+            decoder: (resp) {
+      return UserModel.fromMap(resp);
+    });
+
+    if (response.hasError) {
+      throw RestException(
+        message: 'Erro ao efetuar o login. Verifique suas credenciais',
+        statusCode: response.statusCode ?? 0,
+      );
+    }
+
+    return response.body;
+  }
+
+  @override
+  Future<UserModel> getMe(String token) async {
+    final response = await httpClient.get('/users/me',
+        headers: {'Authorization': 'Bearer $token'}, decoder: (resp) {
+      return UserModel.fromMap(resp);
+    });
+
+    if (response.hasError) {
+      throw RestException(
+        message: 'Erro ao obter usuário',
+        statusCode: response.statusCode ?? 0,
+      );
+    }
+
+    return response.body;
   }
 }
